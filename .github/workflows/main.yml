@@ -32,6 +32,20 @@ jobs:
       run: |
         echo "GH_TOKEN: ${{ secrets.PAT_TOKEN }}"
 
+    - name: Debug Git Config
+      run: |
+        git config --list
+      
+    - name: Debug Git Info
+      run: |
+        git remote show origin
+    
+    - name: Debug Token Authentication
+      run: |
+        echo "GH_TOKEN: $GH_TOKEN"
+        git remote -v
+        git ls-remote
+
     - name: Merge to Main and Push
       run: |
         git merge --ff-only staging
