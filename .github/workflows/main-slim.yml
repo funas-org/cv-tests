@@ -23,15 +23,6 @@ jobs:
         git config --local user.name "leofuna"
         git config --local user.email "leo.funa@gmail.com"
 
-    - name: Debug Git User
-      run: git config --list
-    - name: Debug Git Credentials
-      run: cat .git/credentials
-    - name: Debug Execution User
-      run: whoami
-    
-    
-
     - name: Get and Update staging branch
       run: |
         git fetch origin staging
