@@ -20,7 +20,7 @@ jobs:
 
     - name: Configure user
       run: |
-        git config --local user.name "LeoFuna"
+        git config --local user.name "leofuna"
         git config --local user.email "leo.funa@gmail.com"
         git config --local credential.helper "store --file=.git/credentials"
         echo "https://github.com/funas-org/cv-tests.git ${{ secrets.PAT_TOKEN }}" > .git/credentials
