@@ -25,6 +25,15 @@ jobs:
         git config --local credential.helper "store --file=.git/credentials"
         echo "https://github.com/funas-org/cv-tests.git ${{ secrets.PAT_TOKEN }}" > .git/credentials
 
+    - name: Debug Git User
+      run: git config --list
+    - name: Debug Git Credentials
+      run: cat .git/credentials
+    - name: Debug Execution User
+      run: whoami
+    
+    
+
     - name: Get and Update staging branch
       run: |
         git fetch origin staging
