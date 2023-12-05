@@ -18,8 +18,8 @@ jobs:
 
     - name: Configure user
       run: |
-        git config user.name "cv-devs"
-        git config user.email "dev@clearviction.org"
+        git config user.name "LeoFuna"
+        git config user.email "leo.funa@gmail.com"
 
     - name: Get and Update staging branch
       run: |
