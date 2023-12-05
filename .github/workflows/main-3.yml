@@ -1,0 +1,40 @@
+name: Merging Stagin to Main 3
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_job:
+        description: 'Excecute manually'
+        required: true
+        default: 'yes'
+
+permissions: write-all
+
+jobs:
+  send-api-request:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4.1.1
+
+    - name: Configure user
+      run: |
+        git config --local user.name "leofuna"
+        git config --local user.email "leo.funa@gmail.com"
+        git config --local credential.helper store
+        git remote set-url origin "https://leofuna:${{ secrets.PAT_TOKEN }}@github.com/funas-org/cv-tests.git"
+
+    - name: Get and Update staging branch
+      run: |
+        git fetch origin staging
+        git checkout staging
+        git pull origin staging
+        git checkout main
+
+    - name: Merge to Main and Push
+      run: |
+        git merge --ff-only staging
+        git push origin main
+      env:
+        GH_TOKEN: ${{ secrets.PAT_TOKEN }}
