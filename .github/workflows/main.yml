@@ -28,9 +28,13 @@ jobs:
         git pull origin staging
         git checkout main
     
+    - name: Debug GH_TOKEN
+      run: |
+        echo "GH_TOKEN: $GH_TOKEN"
+
     - name: Merge to Main and Push
       run: |
-        git merge --ff-only staging 
+        git merge --ff-only staging
         git push
       env:
         GH_TOKEN: ${{ secrets.PAT_TOKEN }}
