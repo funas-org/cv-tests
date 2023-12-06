@@ -13,8 +13,6 @@ permissions: write-all
 jobs:
   send-api-request:
     runs-on: ubuntu-latest
-    env:
-      GH_TOKEN: ${{ secrets.PAT_TOKEN }}
 
     steps:
     - name: Checkout code
