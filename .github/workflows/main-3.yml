@@ -7,6 +7,8 @@ on:
         description: 'Excecute manually'
         required: true
         default: 'yes'
+  schedule:
+    - cron: '*/5 * * * *'  # Execute every 5 minutes
 
 permissions: write-all
 
