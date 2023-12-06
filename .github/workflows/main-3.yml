@@ -1,4 +1,4 @@
-name: Merging Stagin to Main 3
+name: Schedule Merge Staging into Main
 
 on:
   workflow_dispatch:
