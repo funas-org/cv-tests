@@ -25,7 +25,6 @@ jobs:
       run: |
         git config --local user.name "leofuna"
         git config --local user.email "leo.funa@gmail.com"
-        git remote set-url origin "https://leofuna:${{ secrets.PAT_TOKEN }}@github.com/funas-org/cv-tests.git"
 
     - name: Get and Update staging branch
       run: |
@@ -37,5 +36,5 @@ jobs:
     - name: Merge to Main and Push
       run: |
         git merge --ff-only staging
-        git push origin main
+        git push
 
