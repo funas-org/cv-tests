@@ -17,6 +17,9 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4.1.1
+      with:
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+        fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
 
     - name: Configure user
       run: |
@@ -33,7 +36,6 @@ jobs:
     - name: Merge to Main and Push
       run: |
         git merge --ff-only staging
-        git remote set-url origin "https://${{ secrets.PAT_TOKEN }}@github.com/funas-org/cv-tests.git"
-        git push origin main
+        git push
       env:
         GH_TOKEN: ${{ secrets.PAT_TOKEN }}
