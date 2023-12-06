@@ -17,15 +17,12 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v4.1.1
-      with:
-        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-        fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
 
     - name: Configure user
       run: |
         git config --local user.name "leofuna"
         git config --local user.email "leo.funa@gmail.com"
-        git remote set-url origin "https://leofuna:${{ secrets.PAT_TOKEN }}@github.com/funas-org/cv-tests.git"
+        git remote set-url origin "https://${{ secrets.PAT_TOKEN }}@github.com/funas-org/cv-tests.git"
 
     - name: Get and Update staging branch
       run: |
