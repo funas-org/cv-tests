@@ -25,7 +25,6 @@ jobs:
       run: |
         git config --local user.name "leofuna"
         git config --local user.email "leo.funa@gmail.com"
-        git config --local credential.helper store
         git remote set-url origin "https://leofuna:${{ secrets.PAT_TOKEN }}@github.com/funas-org/cv-tests.git"
 
     - name: Get and Update staging branch
