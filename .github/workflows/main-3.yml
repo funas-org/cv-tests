@@ -8,6 +8,8 @@ on:
         required: true
         default: 'yes'
 
+permissions: write-all
+
 jobs:
   send-api-request:
     runs-on: ubuntu-latest
