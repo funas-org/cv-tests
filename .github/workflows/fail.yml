@@ -99,6 +99,7 @@ jobs:
   
   check-fail:
     runs-on: ubuntu-latest
+    needs: [install, lint, build, merge]
     if: failure()
     steps:
     - name: Check Workflow Status
