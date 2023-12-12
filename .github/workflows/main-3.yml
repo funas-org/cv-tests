@@ -66,11 +66,14 @@ jobs:
           cache: 'npm'
 
       - uses: actions/cache@v3.3.2
-        id: restore-build
         with:
-          path: ./*
-          key: ${{ github.sha }}-${{ github.run_number }}
-
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+      
       - uses: actions/download-artifact@v2.1.1
 
       - name: Build
