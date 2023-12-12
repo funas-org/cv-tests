@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       run_job:
-        description: 'Excecute manually'
+        description: 'Execute manually'
         required: true
         default: 'yes'
   schedule:
@@ -99,12 +99,15 @@ jobs:
         git merge --ff-only staging
         git push origin main
   
-  check-fail:
+  handle-fail:
     runs-on: ubuntu-latest
+    needs: [install, lint, build, merge]
     if: failure()
     steps:
+    - uses: actions/checkout@v4.1.1
+
     - name: Check Workflow Status
-      run: gh issue create --title "Falha no Workflow" --body "O workflow falhou. Por favor, verifique os logs para mais informações."
+      run: gh issue create --title "Failed Merge" --body "Workflow that merge staging to main failed. Please check logs."
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
