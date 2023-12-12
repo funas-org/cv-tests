@@ -105,7 +105,4 @@ jobs:
     - uses: actions/checkout@v4.1.1
 
     - name: Check Workflow Status
-      run: gh issue create --title "Falha no Workflow" --body "O workflow falhou. Por favor, verifique os logs para mais informações."
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
+      run: gh issue create --title "Merge To Main Fail" --body "Workflow that merge staging to main failed. Please check it out."
