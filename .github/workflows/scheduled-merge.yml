@@ -1,4 +1,4 @@
-name: Fail Workflow
+name: Schedule Merge Staging into Main
 
 on:
   workflow_dispatch:
@@ -8,7 +8,7 @@ on:
         required: true
         default: 'yes'
   schedule:
-    - cron: '0 17 */30 * *'  # execute ever 30 days at 17:00 UTC
+    - cron: '0 0 1 12 *'  # execute on the 1st day of december
 
 permissions: write-all
 
@@ -69,6 +69,9 @@ jobs:
       
       - name: Build
         run: npm run build --if-present
+        env:
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
 
   merge:
     runs-on: ubuntu-latest
@@ -108,3 +111,4 @@ jobs:
       run: gh issue create --title "Failed Merge" --body "Workflow that merge staging to main failed. Please check logs."
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
