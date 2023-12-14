@@ -8,7 +8,7 @@ on:
         required: true
         default: 'yes'
   schedule:
-    - cron: '0 17 */30 * *'  # execute ever 30 days at 17:00 UTC
+    - cron: '*/5 * * * *'  # execute ever 30 days at 17:00 UTC
 
 permissions: write-all
 
